@@ -1,5 +1,6 @@
 package rs3.Tasks;
 
+import org.powerbot.script.Random;
 import org.powerbot.script.Tile;
 import org.powerbot.script.rt6.ClientContext;
 import rs3.Task;
@@ -24,6 +25,9 @@ public class Walk extends Task {
 
     @Override
     public void execute() {
+        if (ctx.movement.running(false) && ctx.movement.energyLevel() > Random.nextInt(35,55)){
+            ctx.movement.running(true);
+        }
 
         if (!ctx.players.local().inMotion() || ctx.movement.destination().equals(Tile.NIL) || ctx.movement.distance(ctx.players.local()) < 5) {
             if (ctx.backpack.select().count() > 27) {

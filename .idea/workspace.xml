@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="eb475833-6855-44c4-a68e-4ca53a7ea9b5" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/src/rs3/QuickMining.java" afterPath="$PROJECT_DIR$/src/rs3/QuickMining.java" />
+      <change beforePath="$PROJECT_DIR$/src/rs3/Tasks/Mine.java" afterPath="$PROJECT_DIR$/src/rs3/Tasks/Mine.java" />
+      <change beforePath="$PROJECT_DIR$/src/rs3/Tasks/Walk.java" afterPath="$PROJECT_DIR$/src/rs3/Tasks/Walk.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,13 +16,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="QuickMining.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="QuickMining.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/rs3/QuickMining.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="77" column="49" lean-forward="false" selection-start-line="77" selection-start-column="49" selection-end-line="77" selection-end-column="49" />
+            <state relative-caret-position="382">
+              <caret line="59" column="1" lean-forward="false" selection-start-line="59" selection-start-column="1" selection-end-line="62" selection-end-column="0" />
               <folding>
                 <element signature="e#577#583#0" expanded="true" />
+                <element signature="e#1720#1721#0" expanded="true" />
+                <element signature="e#1753#1754#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -29,13 +33,28 @@
       <file leaf-file-name="Mine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/rs3/Tasks/Mine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="33" column="21" lean-forward="false" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
+            <state relative-caret-position="697">
+              <caret line="41" column="5" lean-forward="true" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#391#392#0" expanded="true" />
-                <element signature="e#417#418#0" expanded="true" />
-                <element signature="e#1021#1022#0" expanded="true" />
+                <element signature="e#472#473#0" expanded="true" />
+                <element signature="e#498#499#0" expanded="true" />
+                <element signature="e#931#1118#0" expanded="true" />
+                <element signature="e#1117#1118#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Walk.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/rs3/Tasks/Walk.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="229">
+              <caret line="27" column="92" lean-forward="false" selection-start-line="27" selection-start-column="92" selection-end-line="27" selection-end-column="92" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#827#828#0" expanded="true" />
+                <element signature="e#854#855#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -49,6 +68,14 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>ROCK_IDS</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>COPPER_ROCK_IDS</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
@@ -67,11 +94,11 @@
         <option value="$PROJECT_DIR$/src/scripts/GoblinKiller.java" />
         <option value="$PROJECT_DIR$/src/scripts/CowKiller.java" />
         <option value="$PROJECT_DIR$/src/rs3/Tasks/Drop.java" />
-        <option value="$PROJECT_DIR$/src/rs3/Tasks/Mine.java" />
         <option value="$PROJECT_DIR$/src/rs3/Walker.java" />
         <option value="$PROJECT_DIR$/src/rs3/Tasks/Bank.java" />
-        <option value="$PROJECT_DIR$/src/rs3/Tasks/Walk.java" />
         <option value="$PROJECT_DIR$/src/rs3/QuickMining.java" />
+        <option value="$PROJECT_DIR$/src/rs3/Tasks/Mine.java" />
+        <option value="$PROJECT_DIR$/src/rs3/Tasks/Walk.java" />
       </list>
     </option>
   </component>
@@ -411,19 +438,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/rs3/Tasks/Mine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="21" lean-forward="false" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#391#392#0" expanded="true" />
-            <element signature="e#417#418#0" expanded="true" />
-            <element signature="e#1021#1022#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/rs3/Task.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -452,24 +466,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/rs3/Tasks/Walk.java">
+    <entry file="file://$PROJECT_DIR$/src/rs3/QuickMining.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="20" lean-forward="false" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+        <state relative-caret-position="382">
+          <caret line="59" column="1" lean-forward="false" selection-start-line="59" selection-start-column="1" selection-end-line="62" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#792#793#0" expanded="true" />
-            <element signature="e#819#820#0" expanded="true" />
+            <element signature="e#577#583#0" expanded="true" />
+            <element signature="e#1720#1721#0" expanded="true" />
+            <element signature="e#1753#1754#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/rs3/QuickMining.java">
+    <entry file="file://$PROJECT_DIR$/src/rs3/Tasks/Mine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="77" column="49" lean-forward="false" selection-start-line="77" selection-start-column="49" selection-end-line="77" selection-end-column="49" />
+        <state relative-caret-position="697">
+          <caret line="41" column="5" lean-forward="true" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
           <folding>
-            <element signature="e#577#583#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#472#473#0" expanded="true" />
+            <element signature="e#498#499#0" expanded="true" />
+            <element signature="e#931#1118#0" expanded="true" />
+            <element signature="e#1117#1118#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rs3/Tasks/Walk.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="27" column="92" lean-forward="false" selection-start-line="27" selection-start-column="92" selection-end-line="27" selection-end-column="92" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#827#828#0" expanded="true" />
+            <element signature="e#854#855#0" expanded="true" />
           </folding>
         </state>
       </provider>

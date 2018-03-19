@@ -19,13 +19,15 @@ public class QuickMining extends PollingScript<ClientContext> implements PaintLi
     List<Task> taskList = new ArrayList<Task>();
     int startExp = 0;
 
+    private String userChoice;
+
     @Override
     public void start(){
 
-        String userOptions[] = {"Bank", "Powermine"};
-        String userChoice = ""+(String)JOptionPane.showInputDialog(null, "Bank or Powermine?", "QuickMining", JOptionPane.PLAIN_MESSAGE, null, userOptions, userOptions[0]);
+        String userOptions[] = {"Mixed","Copper","Tin", "Powermine"};
+        userChoice = ""+(String)JOptionPane.showInputDialog(null, "Choose mining option", "QuickMining", JOptionPane.PLAIN_MESSAGE, null, userOptions, userOptions[0]);
 
-        if (userChoice.equals("Bank")){
+        if (userChoice.equals("Mixed")  || userChoice.equals("Copper") || userChoice.equals("Tin")){
             taskList.add(new Bank(ctx));
             taskList.add(new Walk(ctx));
         } else if (userChoice.equals("Powermine")){
@@ -53,6 +55,10 @@ public class QuickMining extends PollingScript<ClientContext> implements PaintLi
                 break;
             }
         }
+    }
+
+    public String getUserChoice() {
+        return userChoice;
     }
 
     @Override
