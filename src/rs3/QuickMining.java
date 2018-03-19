@@ -3,8 +3,7 @@ package rs3;
 import org.powerbot.script.PollingScript;
 import org.powerbot.script.Script;
 import org.powerbot.script.rt6.ClientContext;
-import rs3.Tasks.Drop;
-import rs3.Tasks.Mine;
+import rs3.Tasks.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,9 @@ public class QuickMining extends PollingScript<ClientContext> {
 
     @Override
     public void start(){
-        taskList.add(new Drop(ctx));
+        //taskList.add(new Drop(ctx));
+        taskList.add(new Bank(ctx));
+        taskList.add(new Walk(ctx));
         taskList.add(new Mine(ctx));
     }
 
