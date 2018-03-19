@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb475833-6855-44c4-a68e-4ca53a7ea9b5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/rs3/MConstants.java" afterPath="$PROJECT_DIR$/src/rs3/MConstants.java" />
-      <change beforePath="$PROJECT_DIR$/src/rs3/QuickMining.java" afterPath="$PROJECT_DIR$/src/rs3/QuickMining.java" />
       <change beforePath="$PROJECT_DIR$/src/rs3/Tasks/Drop.java" afterPath="$PROJECT_DIR$/src/rs3/Tasks/Drop.java" />
-      <change beforePath="$PROJECT_DIR$/src/rs3/Tasks/Mine.java" afterPath="$PROJECT_DIR$/src/rs3/Tasks/Mine.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,7 +18,7 @@
         <entry file="file://$PROJECT_DIR$/src/rs3/QuickMining.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
-              <caret line="53" column="38" lean-forward="true" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
+              <caret line="53" column="38" lean-forward="false" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
               <folding>
                 <element signature="e#635#641#0" expanded="true" />
                 <element signature="e#1781#1787#0" expanded="true" />
@@ -33,11 +30,11 @@
       <file leaf-file-name="Drop.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/rs3/Tasks/Drop.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="36" column="56" lean-forward="true" selection-start-line="36" selection-start-column="56" selection-end-line="36" selection-end-column="56" />
+            <state relative-caret-position="374">
+              <caret line="32" column="39" lean-forward="true" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
               <folding>
-                <element signature="e#815#1034#0" expanded="true" />
-                <element signature="e#1033#1034#0" expanded="true" />
+                <element signature="e#805#1024#0" expanded="true" />
+                <element signature="e#1023#1024#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -73,7 +70,7 @@
         <entry file="file://$PROJECT_DIR$/src/rs3/MConstants.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -495,7 +492,7 @@
     <entry file="file://$PROJECT_DIR$/src/rs3/MConstants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -503,7 +500,7 @@
     <entry file="file://$PROJECT_DIR$/src/rs3/QuickMining.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="53" column="38" lean-forward="true" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
+          <caret line="53" column="38" lean-forward="false" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
           <folding>
             <element signature="e#635#641#0" expanded="true" />
             <element signature="e#1781#1787#0" expanded="true" />
@@ -513,11 +510,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/rs3/Tasks/Drop.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="36" column="56" lean-forward="true" selection-start-line="36" selection-start-column="56" selection-end-line="36" selection-end-column="56" />
+        <state relative-caret-position="374">
+          <caret line="32" column="39" lean-forward="true" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
           <folding>
-            <element signature="e#815#1034#0" expanded="true" />
-            <element signature="e#1033#1034#0" expanded="true" />
+            <element signature="e#805#1024#0" expanded="true" />
+            <element signature="e#1023#1024#0" expanded="true" />
           </folding>
         </state>
       </provider>

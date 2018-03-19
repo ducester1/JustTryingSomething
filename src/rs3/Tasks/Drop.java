@@ -30,7 +30,7 @@ public class Drop extends Task {
                 break;
             }
             final int startAmtInventory = ctx.backpack.select().count();
-            copperOre.interact("Drop", "Copper");
+            copperOre.interact("Drop");
 
             Condition.wait(new Callable<Boolean>() {
                 @Override
