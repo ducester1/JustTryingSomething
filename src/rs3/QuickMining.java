@@ -1,17 +1,19 @@
 package rs3;
 
+import org.powerbot.script.PaintListener;
 import org.powerbot.script.PollingScript;
 import org.powerbot.script.Script;
 import org.powerbot.script.rt6.ClientContext;
 import rs3.Tasks.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Script.Manifest(name ="QuickMining", description ="Turorial", properties = "client=6; author=Scott; topic=999")
 
-public class QuickMining extends PollingScript<ClientContext> {
+public class QuickMining extends PollingScript<ClientContext> implements PaintListener{
 
     List<Task> taskList = new ArrayList<Task>();
 
@@ -47,5 +49,24 @@ public class QuickMining extends PollingScript<ClientContext> {
                 break;
             }
         }
+    }
+
+    @Override
+    public void repaint(Graphics graphics) {
+        long millisecconds = this.getTotalRuntime();
+        long secconds = (millisecconds / 1000) % 60;
+        long minutes = (millisecconds / 60000) % 60;
+        long hours = (millisecconds/ (1000*60*60)) % 60;
+
+        Graphics2D g = (Graphics2D)graphics;
+
+        g.setColor(new Color(0,0,0,180));
+        g.fillRect(0,0,300,200);
+
+        g.setColor(new Color(255,255,255));
+        g.drawRect(0,  0,300,200);
+
+        g.drawString("QuickMiner", 20 ,20);
+        g.drawString("Running: " + String.format("%02d:%02d:%02d", hours,minutes,secconds),20,40);
     }
 }
