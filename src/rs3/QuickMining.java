@@ -4,6 +4,7 @@ import org.powerbot.script.PaintListener;
 import org.powerbot.script.PollingScript;
 import org.powerbot.script.Script;
 import org.powerbot.script.rt6.ClientContext;
+import org.powerbot.script.rt6.Constants;
 import rs3.Tasks.*;
 
 import javax.swing.*;
@@ -16,6 +17,7 @@ import java.util.List;
 public class QuickMining extends PollingScript<ClientContext> implements PaintListener{
 
     List<Task> taskList = new ArrayList<Task>();
+    int startExp = 0;
 
     @Override
     public void start(){
@@ -33,6 +35,8 @@ public class QuickMining extends PollingScript<ClientContext> implements PaintLi
         }
 
         taskList.add(new Mine(ctx));
+
+        startExp = ctx.skills.experience(Constants.SKILLS_MINING);
     }
 
     @Override
@@ -58,6 +62,8 @@ public class QuickMining extends PollingScript<ClientContext> implements PaintLi
         long minutes = (millisecconds / 60000) % 60;
         long hours = (millisecconds/ (1000*60*60)) % 60;
 
+        int expGained = ctx.skills.experience(Constants.SKILLS_MINING) - startExp;
+
         Graphics2D g = (Graphics2D)graphics;
 
         g.setColor(new Color(0,0,0,180));
@@ -68,5 +74,7 @@ public class QuickMining extends PollingScript<ClientContext> implements PaintLi
 
         g.drawString("QuickMiner", 20 ,20);
         g.drawString("Running: " + String.format("%02d:%02d:%02d", hours,minutes,secconds),20,40);
+        g.drawString("Exp gained: " + expGained,20,60);
+        g.drawString("Exp/Hour" + (int)(expGained * (36000000 / millisecconds)),20,80);
     }
 }
