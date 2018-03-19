@@ -11,24 +11,25 @@ import java.util.concurrent.Callable;
 
 public class Mine extends Task {
 
-    final static int COPPER_ROCK_IDS[] = {3027, 3229};
-    final static int TIN_ROCK_IDS[] = {3038,3245};
+    int rockIds[];
+
 
     Tile rockLocation = Tile.NIL;
 
-    public Mine(ClientContext ctx) {
+    public Mine(ClientContext ctx, int[] rockIds) {
         super(ctx);
+        this.rockIds = rockIds;
     }
 
     @Override
     public boolean activate() {
-        return ctx.objects.select().at(rockLocation).id(COPPER_ROCK_IDS).poll() .equals(ctx.objects.nil()) || ctx.players.local().animation() == -1;
+        return ctx.objects.select().at(rockLocation).id(rockIds).poll() .equals(ctx.objects.nil()) || ctx.players.local().animation() == -1;
     }
 
     @Override
     public void execute() {
 
-        GameObject rockToMine = ctx.objects.select().id(COPPER_ROCK_IDS).nearest().poll();
+        GameObject rockToMine = ctx.objects.select().id(rockIds).nearest().poll();
         rockLocation = rockToMine.tile();
         rockToMine.click();
 

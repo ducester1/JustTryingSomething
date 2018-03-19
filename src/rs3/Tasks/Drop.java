@@ -6,10 +6,9 @@ import org.powerbot.script.rt6.Item;
 import rs3.Task;
 
 import java.util.concurrent.Callable;
+import java.util.regex.Pattern;
 
 public class Drop extends Task {
-
-    final static int COPPER_ORE = 436;
 
     public Drop(ClientContext ctx) {
         super(ctx);
@@ -23,20 +22,22 @@ public class Drop extends Task {
     @Override
     public void execute() {
 
-            for(Item copperOre : ctx.backpack.select().id(COPPER_ORE)){
 
-                if(ctx.controller.isStopping()){
-                    break;
-                }
-                final int startAmtCopper = ctx.backpack.select().id(COPPER_ORE).count();
-                copperOre.interact("Drop", "Copper");
 
-                Condition.wait(new Callable<Boolean>() {
-                    @Override
-                    public Boolean call() throws Exception {
-                        return ctx.backpack.select().id(COPPER_ORE).count() != startAmtCopper;
-                    }
-                },25,20);
+        for (Item copperOre : ctx.backpack.select().name(Pattern.compile("(.*ore) | Clay | Coal"))){
+
+            if (ctx.controller.isStopping()) {
+                break;
             }
+            final int startAmtInventory = ctx.backpack.select().count();
+            copperOre.interact("Drop", "Copper");
+
+            Condition.wait(new Callable<Boolean>() {
+                @Override
+                public Boolean call() throws Exception {
+                    return ctx.backpack.select().count() != startAmtInventory;
+                }
+            }, 25, 20);
+        }
     }
 }
