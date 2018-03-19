@@ -29,7 +29,7 @@ public class QuickMining extends PollingScript<ClientContext> implements PaintLi
 
         if (userChoice.equals("Mixed")  || userChoice.equals("Copper") || userChoice.equals("Tin")){
             taskList.add(new Bank(ctx));
-            taskList.add(new Walk(ctx));
+            taskList.add(new Walk(ctx, MConstants.LUMBRIDGE_SWAMP));
         } else if (userChoice.equals("Powermine")){
             taskList.add(new Drop(ctx));
         } else {
