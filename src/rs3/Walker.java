@@ -82,7 +82,7 @@ public class Walker {
             if (nextTile.floor() != p.tile().floor()) {
                 if (go.type() == GameObject.Type.INTERACTIVE && go.actions().length>0) {
                     if (nextTile.floor() > p.tile().floor()) {                      //Need to climb up.
-                        if (calcDist < distance && reachable(go)) {
+                        if (calcDist < distance) {
                             for (String s : go.actions()) {
                                 if (s != null && !s.equals("null") && s.contains("Climb-up")) {
                                     obstacle = go;
@@ -92,7 +92,7 @@ public class Walker {
                             }
                         }
                     } else {                                                     //Need to climb down.
-                        if (calcDist < distance && reachable(go)) {
+                        if (calcDist < distance) {
                             for (String s : go.actions()) {
                                 if (s != null && !s.equals("null") && s.contains("Climb-down")) {
                                     obstacle = go;
@@ -106,7 +106,7 @@ public class Walker {
             } else if (nextTile.distanceTo(ctx.players.local()) > 50){          //we can now assume that we need to go up or down .. not flawless whatsoever
                 if (go.type() != GameObject.Type.BOUNDARY) {
                     for (String s : go.actions()) {
-                        if (go.tile().distanceTo(nextTile) + go.tile().distanceTo(p) < distance && reachable(go)) {
+                        if (go.tile().distanceTo(nextTile) + go.tile().distanceTo(p) < distance) {
                             if (s != null && !s.equals("null") && (s.contains("Climb-up") || s.contains("Climb-down") || s.contains("Enter"))) {
                                 obstacle = go;
                                 distance = go.tile().distanceTo(nextTile) + go.tile().distanceTo(p);              //Set the distance to the object so we can compare future objects against it to determine the best.
@@ -122,7 +122,7 @@ public class Walker {
                  * as some random boundary objects appear with the name null.
                  */
                 if (go.type() == GameObject.Type.BOUNDARY) {
-                    if (calcDist < distance && reachable(go)) {
+                    if (calcDist < distance) {
                         obstacle = go;
                         distance = calcDist;                                                            //Set the distance to the object so we can compare future objects against it to determine the best.
                     }
@@ -168,21 +168,6 @@ public class Walker {
         return false;
     }
 
-    /**
-     * Determines if a game object is reachable by
-     * checking the tiles around it.
-     *
-     * @param go The game object being tested.
-     * @return True or false.
-     */
-    private boolean reachable(GameObject go) {
-        Tile t1 = new Tile(go.tile().x(), go.tile().y(), go.tile().floor());
-        Tile t2 = new Tile(go.tile().x(), go.tile().y(), go.tile().floor());
-        Tile t3 = new Tile(go.tile().x(), go.tile().y(), go.tile().floor());
-        Tile t4 = new Tile(go.tile().x(), go.tile().y(), go.tile().floor());
-
-        return (t1.matrix(ctx).reachable() || t2.matrix(ctx).reachable() || t3.matrix(ctx).reachable() || t4.matrix(ctx).reachable());
-    }
 
     /**
      * Handles the period after interacting with the object.
@@ -306,7 +291,7 @@ public class Walker {
      */
     public boolean walkPathReverse(Tile[] t){
         t = ctx.movement.newTilePath(t).reverse().array();
-
+        System.out.println("switched");
         return walkPath(t);
     }
 

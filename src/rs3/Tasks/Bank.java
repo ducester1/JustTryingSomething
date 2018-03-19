@@ -20,8 +20,9 @@ public class Bank extends Task {
     @Override
     public void execute() {
         if(ctx.bank.opened()){
+            final int inventCount = ctx.backpack.select().count();
             if (ctx.bank.depositInventory()){
-                final int inventCount = ctx.backpack.select().count();
+
                 Condition.wait(new Callable<Boolean>() {
                     @Override
                     public Boolean call() throws Exception {
