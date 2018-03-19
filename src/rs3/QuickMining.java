@@ -5,6 +5,7 @@ import org.powerbot.script.Script;
 import org.powerbot.script.rt6.ClientContext;
 import rs3.Tasks.*;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +17,19 @@ public class QuickMining extends PollingScript<ClientContext> {
 
     @Override
     public void start(){
-        //taskList.add(new Drop(ctx));
-        taskList.add(new Bank(ctx));
-        taskList.add(new Walk(ctx));
+
+        String userOptions[] = {"Bank", "Powermine"};
+        String userChoice = ""+(String)JOptionPane.showInputDialog(null, "Bank or Powermine?", "QuickMining", JOptionPane.PLAIN_MESSAGE, null, userOptions, userOptions[0]);
+
+        if (userChoice.equals("Bank")){
+            taskList.add(new Bank(ctx));
+            taskList.add(new Walk(ctx));
+        } else if (userChoice.equals("Powermine")){
+            taskList.add(new Drop(ctx));
+        } else {
+            ctx.controller.stop();
+        }
+
         taskList.add(new Mine(ctx));
     }
 
