@@ -37,6 +37,7 @@ public class Bank extends TheSmith.Task {
             if (inventCount == 0) {
                 ctx.bank.withdraw(436, 14);
                 ctx.bank.withdraw(438, 14);
+                ctx.bank.close();
             }
         } else {
             if (ctx.bank.inViewport()) {
@@ -49,7 +50,7 @@ public class Bank extends TheSmith.Task {
                     }, 250, 20);
                 }
             } else {
-                ctx.camera.turnTo(ctx.bank.nearest());
+                ctx.camera.turnTo(ctx.bank.nearest(), 25);
             }
         }
     }

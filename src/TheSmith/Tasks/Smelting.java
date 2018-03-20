@@ -15,7 +15,7 @@ public class Smelting extends Task {
 
     @Override
     public boolean activate() {
-        return ctx.backpack.select().id(436).count() == 14 && ctx.backpack.select().id(438).count() == 14;
+        return ctx.backpack.select().id(436).count() > 1 && ctx.backpack.select().id(438).count() > 1;
     }
 
     @Override
@@ -34,12 +34,13 @@ public class Smelting extends Task {
             }, 200, 10);
         }
         if (furnace.inViewport()) {
-            if (ctx.players.local().animation() == -1) {
+            System.out.println(ctx.widgets.widget(1251).valid());
+            if (ctx.players.local().speed() == 0 && !ctx.widgets.widget(1251).valid()) {
                 furnace.click();
             }
 
         } else {
-            ctx.camera.turnTo(furnace);
+            ctx.camera.turnTo(furnace, 25);
         }
     }
 }
