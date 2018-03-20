@@ -1,11 +1,11 @@
 package rs3;
 
-import org.powerbot.script.PaintListener;
-import org.powerbot.script.PollingScript;
-import org.powerbot.script.Script;
-import org.powerbot.script.Tile;
+import org.powerbot.bot.rt6.WidgetCloser;
+import org.powerbot.script.*;
 import org.powerbot.script.rt6.ClientContext;
 import org.powerbot.script.rt6.Constants;
+import org.powerbot.script.rt6.Widget;
+import org.powerbot.script.rt6.Widgets;
 import rs3.Tasks.*;
 
 import javax.swing.*;
@@ -13,6 +13,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 @Script.Manifest(name ="QuickMining", description ="Turorial", properties = "client=6; author=Scott; topic=999")
 
@@ -20,9 +21,13 @@ public class QuickMining extends PollingScript<ClientContext> implements PaintLi
 
     List<Task> taskList = new ArrayList<Task>();
     int startExp = 0;
+    int startMiningLvl = 1;
+    int miningLvl = 1;
 
     @Override
     public void start(){
+        startMiningLvl = ctx.skills.level(Constants.SKILLS_MINING);
+        miningLvl = startMiningLvl;
 
         String userOptions[] = {"Bank", "Powermine"};
         String userChoice = ""+(String)JOptionPane.showInputDialog(null, "Bank or Powermining?", "QuickMining", JOptionPane.PLAIN_MESSAGE, null, userOptions, userOptions[0]);
@@ -76,6 +81,36 @@ public class QuickMining extends PollingScript<ClientContext> implements PaintLi
     @Override
     public void poll() {
 
+        //click skill on lvlup
+        if(ctx.skills.level(Constants.SKILLS_MINING) > miningLvl){
+            Condition.wait(new Callable<Boolean>() {
+
+                @Override
+                public Boolean call() throws Exception {
+                    return true;
+                }
+            }, 200, 10);
+
+            ctx.widgets.widget(1466).component(2).component(2).click();
+            miningLvl = ctx.skills.level(Constants.SKILLS_MINING);
+
+            Condition.wait(new Callable<Boolean>() {
+
+                @Override
+                public Boolean call() throws Exception {
+                    return true;
+                }
+            }, 200, 10);
+        }
+        //closes the mining window
+        if(ctx.widgets.widget(1477).component(659).component(1).visible()){
+            ctx.widgets.widget(1477).component(659).component(1).click();
+        }
+
+
+        //close mining skill window
+        ctx.widgets.widget(1477).component(659).component(2).click();
+
         for(Task task : taskList){
             //breaks if pressed stop
             if(ctx.controller.isStopping()){
@@ -87,6 +122,7 @@ public class QuickMining extends PollingScript<ClientContext> implements PaintLi
                 break;
             }
         }
+
     }
 
     @Override
