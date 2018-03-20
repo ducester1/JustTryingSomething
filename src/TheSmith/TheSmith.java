@@ -1,5 +1,6 @@
 package TheSmith;
 
+import TheSmith.Tasks.Bank;
 import org.powerbot.script.PaintListener;
 import org.powerbot.script.PollingScript;
 import org.powerbot.script.Script;
@@ -7,6 +8,7 @@ import org.powerbot.script.rt6.ClientContext;
 import org.powerbot.script.rt6.Constants;
 import rs3.Task;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,22 @@ public class TheSmith extends PollingScript<ClientContext> implements PaintListe
         startSmithingLvl = ctx.skills.level(Constants.SKILLS_MINING);
         smithingLvl = startSmithingLvl;
 
+        //String userOptions[] = {"Bronze bars"};
+        //String userChoice = "" + (String) JOptionPane.showInputDialog(null, "What do you wanna smith?", "The Smith", JOptionPane.PLAIN_MESSAGE, null, userOptions, userOptions[0]);
+
+        taskList.add(new Bank(ctx));
+
+        for (Task task : taskList) {
+            //breaks if pressed stop
+            if (ctx.controller.isStopping()) {
+                break;
+            }
+
+            if (task.activate()) {
+                task.execute();
+                break;
+            }
+        }
     }
 
     @Override
