@@ -2,6 +2,7 @@ package TheSmith;
 
 import TheSmith.Tasks.Bank;
 import TheSmith.Tasks.Smelting;
+import org.powerbot.script.Condition;
 import org.powerbot.script.PaintListener;
 import org.powerbot.script.PollingScript;
 import org.powerbot.script.Script;
@@ -11,6 +12,7 @@ import org.powerbot.script.rt6.Constants;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 @Script.Manifest(name = "The Smith", description = "Smiths your stuff", properties = "client=6; author=Scott; topic=999")
 
@@ -23,8 +25,8 @@ public class TheSmith extends PollingScript<ClientContext> implements PaintListe
     int smithingLvl = 1;
 
     @Override
-    public void poll() {
-        startSmithingLvl = ctx.skills.level(Constants.SKILLS_MINING);
+    public void start() {
+        startSmithingLvl = ctx.skills.level(Constants.SKILLS_SMITHING);
         smithingLvl = startSmithingLvl;
 
         //String userOptions[] = {"Bronze bars"};
@@ -32,6 +34,37 @@ public class TheSmith extends PollingScript<ClientContext> implements PaintListe
 
         taskList.add(new Bank(ctx));
         taskList.add(new Smelting(ctx));
+
+    }
+
+    @Override
+    public void poll() {
+        //click skill on lvlup
+        if (ctx.skills.level(Constants.SKILLS_SMITHING) > smithingLvl) {
+            Condition.wait(new Callable<Boolean>() {
+
+                @Override
+                public Boolean call() throws Exception {
+                    return true;
+                }
+            }, 200, 10);
+
+            ctx.widgets.widget(1466).component(2).component(5).click();
+            smithingLvl = ctx.skills.level(Constants.SKILLS_SMITHING);
+
+            Condition.wait(new Callable<Boolean>() {
+
+                @Override
+                public Boolean call() throws Exception {
+                    return true;
+                }
+            }, 200, 10);
+        }
+
+        //closes the smithing window
+        if (ctx.widgets.widget(1477).component(659).component(1).visible()) {
+            ctx.widgets.widget(1477).component(659).component(1).click();
+        }
 
         for (Task task : taskList) {
             //breaks if pressed stop
@@ -44,6 +77,7 @@ public class TheSmith extends PollingScript<ClientContext> implements PaintListe
                 break;
             }
         }
+
     }
 
     @Override
@@ -63,9 +97,9 @@ public class TheSmith extends PollingScript<ClientContext> implements PaintListe
         g.setColor(new Color(255, 255, 255));
         g.drawRect(0, 0, 300, 200);
 
-        //g.drawString("QuickMiner", 20, 20);
-        //g.drawString("Running: " + String.format("%02d:%02d:%02d", hours, minutes, secconds), 20, 40);
-        //g.drawString("Exp gained: " + expGained, 20, 60);
-        //g.drawString("Exp/Hour" + (int) (expGained * (36000000 / millisecconds)), 20, 80);
+        g.drawString("QuickMiner", 20, 20);
+        g.drawString("Running: " + String.format("%02d:%02d:%02d", hours, minutes, secconds), 20, 40);
+        g.drawString("Exp gained: " + expGained, 20, 60);
+        g.drawString("Exp/Hour" + (int) (expGained * (36000000 / millisecconds)), 20, 80);
     }
 }
