@@ -2,13 +2,13 @@ package TheSmith.Tasks;
 
 import org.powerbot.script.Condition;
 import org.powerbot.script.rt6.ClientContext;
-import rs3.Task;
 
 import java.util.concurrent.Callable;
 
-public class Bank extends Task {
+public class Bank extends TheSmith.Task {
 
     public Bank(ClientContext ctx) {
+
         super(ctx);
     }
 
