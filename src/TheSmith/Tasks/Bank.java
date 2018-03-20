@@ -40,7 +40,7 @@ public class Bank extends TheSmith.Task {
                 ctx.bank.close();
             }
         } else {
-            if (ctx.bank.inViewport()) {
+            if (ctx.bank.inViewport() && ctx.players.local().speed() == 0) {
                 if (ctx.bank.open()) {
                     Condition.wait(new Callable<Boolean>() {
                         @Override

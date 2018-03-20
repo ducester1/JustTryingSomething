@@ -25,16 +25,8 @@ public class Smelting extends Task {
         GameObject furnace = ctx.objects.select().id(45310).poll();
         if (ctx.widgets.widget(1371).valid()) {
             ctx.input.send(" ");
-            Condition.wait(new Callable<Boolean>() {
-
-                @Override
-                public Boolean call() throws Exception {
-                    return ctx.players.local().animation() != -1;
-                }
-            }, 200, 10);
         }
         if (furnace.inViewport()) {
-            System.out.println(ctx.widgets.widget(1251).valid());
             if (ctx.players.local().speed() == 0 && !ctx.widgets.widget(1251).valid()) {
                 furnace.click();
             }
