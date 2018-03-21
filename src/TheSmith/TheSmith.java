@@ -28,6 +28,7 @@ public class TheSmith extends PollingScript<ClientContext> implements PaintListe
     public void start() {
         startSmithingLvl = ctx.skills.level(Constants.SKILLS_SMITHING);
         smithingLvl = startSmithingLvl;
+        startExp = ctx.skills.experience(Constants.SKILLS_SMITHING);
 
         //String userOptions[] = {"Bronze bars"};
         //String userChoice = "" + (String) JOptionPane.showInputDialog(null, "What do you wanna smith?", "The Smith", JOptionPane.PLAIN_MESSAGE, null, userOptions, userOptions[0]);
