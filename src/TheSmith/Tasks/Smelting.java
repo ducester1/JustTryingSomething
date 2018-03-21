@@ -1,5 +1,6 @@
 package TheSmith.Tasks;
 
+import TheSmith.MConstants;
 import TheSmith.Task;
 import org.powerbot.script.Condition;
 import org.powerbot.script.rt6.ClientContext;

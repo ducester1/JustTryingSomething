@@ -30,8 +30,6 @@ public class TheSmith extends PollingScript<ClientContext> implements PaintListe
         smithingLvl = startSmithingLvl;
         startExp = ctx.skills.experience(Constants.SKILLS_SMITHING);
 
-        //String userOptions[] = {"Bronze bars"};
-        //String userChoice = "" + (String) JOptionPane.showInputDialog(null, "What do you wanna smith?", "The Smith", JOptionPane.PLAIN_MESSAGE, null, userOptions, userOptions[0]);
 
         taskList.add(new Bank(ctx));
         taskList.add(new Smelting(ctx));
@@ -90,7 +88,7 @@ public class TheSmith extends PollingScript<ClientContext> implements PaintListe
         g.setColor(new Color(255, 255, 255));
         g.drawRect(0, 0, 300, 200);
 
-        g.drawString("QuickMiner", 20, 20);
+        g.drawString("The Smith", 20, 20);
         g.drawString("Running: " + String.format("%02d:%02d:%02d", hours, minutes, secconds), 20, 40);
         g.drawString("Exp gained: " + expGained, 20, 60);
         g.drawString("Exp/Hour" + (int) (expGained * (36000000 / millisecconds)), 20, 80);

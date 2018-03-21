@@ -35,6 +35,9 @@ public class Bank extends TheSmith.Task {
                 }
             }
             if (inventCount == 0) {
+                if (ctx.bank.select().id(436).count() == 0 || ctx.bank.select().id(438).count() == 0) {
+                    ctx.controller.stop();
+                }
                 ctx.bank.withdraw(436, 14);
                 ctx.bank.withdraw(438, 14);
                 ctx.bank.close();
