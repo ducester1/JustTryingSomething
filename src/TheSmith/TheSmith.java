@@ -21,7 +21,7 @@ public class TheSmith extends PollingScript<ClientContext> implements PaintListe
     List<Task> taskList = new ArrayList<Task>();
 
     int startExp = 0;
-    int startSmithingLvl = 1;
+    int startSmithingLvl = 14;
     int smithingLvl = 1;
 
     @Override
@@ -41,14 +41,6 @@ public class TheSmith extends PollingScript<ClientContext> implements PaintListe
     public void poll() {
         //click skill on lvlup
         if (ctx.skills.level(Constants.SKILLS_SMITHING) > smithingLvl) {
-            Condition.wait(new Callable<Boolean>() {
-
-                @Override
-                public Boolean call() throws Exception {
-                    return true;
-                }
-            }, 200, 10);
-
             ctx.widgets.widget(1466).component(2).component(5).click();
             smithingLvl = ctx.skills.level(Constants.SKILLS_SMITHING);
 
