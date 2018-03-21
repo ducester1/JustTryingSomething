@@ -1,18 +1,48 @@
 package TheSmith;
 
 import TheSmith.Tasks.Smelting;
+import org.powerbot.script.rt6.ClientAccessor;
+import org.powerbot.script.rt6.Component;
+import org.powerbot.script.rt6.Widget;
+import org.powerbot.script.rt6.ClientContext;
 
 import javax.swing.*;
 
-public class choices {
+public class choices extends ClientAccessor {
+
+    public choices(ClientContext ctx) {
+        super(ctx);
+    }
+
+    public int[] getItemsFromBank() {
+        return itemsFromBank;
+    }
+
+    public int getItemToMakeId() {
+        return itemToMakeId;
+    }
+
+    public String getSmeltOrSmith() {
+        return smeltOrSmith;
+    }
+
+    public String getWidgetText() {
+        return widgetText;
+    }
+
+    public Component getWidgetComponent() {
+        return widgetComponent;
+    }
 
     private int[] itemsFromBank = {};
-    private int itemToMake = 0;
+    private int itemToMakeId = 0;
     private String smeltOrSmith;
 
 
-    {
-    }
+    private String widgetText;
+
+
+    private Component widgetComponent;
 
     public String[] UserChoice() {
         String whatToDo[] = {"Smelt", "Smith"};
@@ -30,7 +60,11 @@ public class choices {
                 case "Bronze": {
                     switch (itemToMake) {
                         case "Platebody": {
-
+                            itemsFromBank[0] = 2349;
+                            itemToMakeId = 1117;
+                            widgetComponent = ctx.widgets.widget(1371).component(44).component(145);
+                            ctx.widgets.widget(1371).component(94).text();
+                            widgetText = "Bronze platebody";
                         }
                     }
                 }
