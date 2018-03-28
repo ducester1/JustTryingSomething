@@ -1,7 +1,7 @@
 package TheSmith;
 
 import TheSmith.Tasks.Bank;
-import TheSmith.Tasks.Smelting;
+import TheSmith.Tasks.Smithing;
 import org.powerbot.script.Condition;
 import org.powerbot.script.PaintListener;
 import org.powerbot.script.PollingScript;
@@ -20,9 +20,11 @@ public class TheSmith extends PollingScript<ClientContext> implements PaintListe
 
     List<Task> taskList = new ArrayList<Task>();
 
-    int startExp = 0;
-    int startSmithingLvl = 14;
-    int smithingLvl = 1;
+    private int startExp = 0;
+    private int startSmithingLvl = 14;
+    private int smithingLvl = 1;
+
+    private String[] choice = {"", "", ""};
 
     @Override
     public void start() {
@@ -30,9 +32,10 @@ public class TheSmith extends PollingScript<ClientContext> implements PaintListe
         smithingLvl = startSmithingLvl;
         startExp = ctx.skills.experience(Constants.SKILLS_SMITHING);
 
+        choice = Choices.UserChoice();
 
-        taskList.add(new Bank(ctx));
-        taskList.add(new Smelting(ctx));
+        taskList.add(new Bank(ctx, choice));
+        taskList.add(new Smithing(ctx));
 
     }
 

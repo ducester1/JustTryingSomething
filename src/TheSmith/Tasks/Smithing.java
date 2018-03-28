@@ -8,9 +8,9 @@ import org.powerbot.script.rt6.GameObject;
 
 import java.util.concurrent.Callable;
 
-public class Smelting extends Task {
+public class Smithing extends Task {
 
-    public Smelting(ClientContext ctx) {
+    public Smithing(ClientContext ctx) {
         super(ctx);
     }
 
@@ -35,5 +35,9 @@ public class Smelting extends Task {
         } else {
             ctx.camera.turnTo(furnace, 25);
         }
+    }
+
+    private boolean WidgetOpen() {
+        return false;
     }
 }

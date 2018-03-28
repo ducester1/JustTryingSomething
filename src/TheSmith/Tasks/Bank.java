@@ -7,16 +7,19 @@ import java.util.concurrent.Callable;
 
 public class Bank extends TheSmith.Task {
 
-    public Bank(ClientContext ctx) {
+    private String[] choice;
+    private int[] itemsFromBank = {0, 0};
+    private int itemId;
 
+    public Bank(ClientContext ctx, String[] choice) {
         super(ctx);
+        this.choice = choice;
     }
 
     @Override
     public boolean activate() {
         return ctx.backpack.select().id(2349).count() == 14 || ctx.backpack.select().count() == 0 ||
                 ctx.backpack.select().id(436).count() < 1 || ctx.backpack.select().id(438).count() < 1;
-
     }
 
     @Override
@@ -54,6 +57,27 @@ public class Bank extends TheSmith.Task {
                 }
             } else {
                 ctx.camera.turnTo(ctx.bank.nearest(), 25);
+            }
+        }
+    }
+
+    private void WhatToDo() {
+        //switch welke bar soort
+        switch (choice[1]) {
+            case "Bronze": {
+                //switch welk item
+                switch (choice[2]) {
+                    case "Bar": {
+
+                        break;
+                    }
+                    case "Platebody": {
+                        itemsFromBank[0] = 2349;
+                        itemsFromBank[1] = 0;
+                        itemId = 1117;
+                        break;
+                    }
+                }
             }
         }
     }

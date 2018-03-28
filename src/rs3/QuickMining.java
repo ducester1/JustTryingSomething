@@ -39,11 +39,11 @@ public class QuickMining extends PollingScript<ClientContext> implements PaintLi
             taskList.add(new Bank(ctx));
 
             String locationOptions[] = {"Lumbridge Swamp", "Falador Dwarven"};
-            String locatinoChoice = "" + (String) JOptionPane.showInputDialog(null, "Where do you want to mine?", "QuickMining", JOptionPane.PLAIN_MESSAGE, null, locationOptions, locationOptions[0]);
+            String locationChoice = "" + (String) JOptionPane.showInputDialog(null, "Where do you want to mine?", "QuickMining", JOptionPane.PLAIN_MESSAGE, null, locationOptions, locationOptions[0]);
 
-            if (locatinoChoice.equals("Lumbridge Swamp")) {
+            if (locationChoice.equals("Lumbridge Swamp")) {
                 taskList.add(new Walk(ctx, MConstants.LUMBRIDGE_SWAMP));
-            } else if (locatinoChoice.equals("Falador Dwarven")) {
+            } else if (locationChoice.equals("Falador Dwarven")) {
                 List<Tile> finalPath = new ArrayList<Tile>();
 
                 if (oreChoice.equals("Iron")) {
