@@ -46,8 +46,12 @@ public class Bank extends TheSmith.Task {
                 if (emptyBank) {
                     ctx.controller.stop();
                 }
+
                 ctx.bank.withdraw(itemsFromBank[0], amountItemsFromBank[0]);
-                ctx.bank.withdraw(438, 14);
+
+                if (itemsFromBank[1] != 0) {
+                    ctx.bank.withdraw(itemsFromBank[1], amountItemsFromBank[1]);
+                }
                 ctx.bank.close();
             }
         } else {
@@ -78,11 +82,11 @@ public class Bank extends TheSmith.Task {
                     }
                     case "Platebody": {
                         itemsFromBank[0] = 2349;
-                        amountItemsFromBank[0] = 28;
+                        amountItemsFromBank[0] = 0;
                         amountNeeded[0] = 5;
 
                         itemsFromBank[1] = 0;
-                        amountItemsFromBank[1] = 0;
+                        amountItemsFromBank[1] = -2;
                         amountNeeded[1] = 0;
 
                         itemId = 1117;
