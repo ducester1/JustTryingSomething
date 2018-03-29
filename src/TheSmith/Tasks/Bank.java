@@ -8,26 +8,25 @@ import java.util.concurrent.Callable;
 
 public class Bank extends TheSmith.Task {
 
-    private static String[] choice;
+    private static int[] choice;
     private static int[] itemsFromBank = {0, 0};
     private static int[] amountItemsFromBank = {0, 0};
     private static int[] amountNeeded = {0, 0};
     private static int itemId = 0;
 
-    public Bank(ClientContext ctx, String[] choice) {
+    public Bank(ClientContext ctx, int[] choice) {
         super(ctx);
         this.choice = choice;
     }
 
     @Override
     public boolean activate() {
-        return ctx.backpack.select().count() == 0 || ctx.backpack.select().id(itemsFromBank[0]).count() < amountNeeded[0] ||
-                (itemsFromBank[1] != 0 && ctx.backpack.select().id(itemsFromBank[1]).count() < amountNeeded[1]);
+        return ctx.backpack.select().count() == 0 || ctx.backpack.select().id(choice[0]).count() < choice[2] ||
+                (choice[3] != 0 && ctx.backpack.select().id(choice[3]).count() < choice[5]);
     }
 
     @Override
     public void execute() {
-        if (itemId == 0) whatToDo();
         if (ctx.bank.opened()) {
             final int inventCount = ctx.backpack.select().count();
             if (inventCount > 0) {
@@ -42,16 +41,15 @@ public class Bank extends TheSmith.Task {
                 }
             }
             if (inventCount == 0) {
-                boolean emptyBank = (ctx.bank.select().id(itemsFromBank[0]).count() < amountNeeded[0] || (itemsFromBank[1] != 0 && ctx.bank.select().id(itemsFromBank[1]).count() < amountNeeded[1]));
+                System.out.println(choice[0] + " " + choice[1] + " " + choice[2] + " " + choice[3] + " " + choice[4] + " " + choice[5] + " " + choice[6]);
+                boolean emptyBank = (ctx.bank.select().id(choice[0]).count() < choice[2] || (choice[3] != 0 && ctx.bank.select().id(choice[3]).count() < choice[5]));
                 if (emptyBank) {
                     ctx.controller.stop();
                 }
-                System.out.println(choice[0] + " " + choice[1] + " " + choice[2]);
-                System.out.println(itemsFromBank[0] + " , " + amountItemsFromBank[0]);
-                ctx.bank.withdraw(itemsFromBank[0], amountItemsFromBank[0]);
+                ctx.bank.withdraw(choice[0], choice[1]);
 
-                if (itemsFromBank[1] != 0) {
-                    ctx.bank.withdraw(itemsFromBank[1], amountItemsFromBank[1]);
+                if (choice[3] != 0) {
+                    ctx.bank.withdraw(choice[3], choice[4]);
                 }
                 ctx.bank.close();
             }
@@ -70,7 +68,7 @@ public class Bank extends TheSmith.Task {
             }
         }
     }
-
+/*
     public static void whatToDo() {
         //switch welke bar soort
         switch (choice[1]) {
@@ -78,7 +76,6 @@ public class Bank extends TheSmith.Task {
                 //switch welk item
                 switch (choice[2]) {
                     case "Bar": {
-                        System.out.println("Set Bronze Bar");
                         itemsFromBank[0] = 436;
                         amountItemsFromBank[0] = 14;
                         amountNeeded[0] = 1;
@@ -124,4 +121,5 @@ public class Bank extends TheSmith.Task {
                 break;
         }
     }
+    */
 }

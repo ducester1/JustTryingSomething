@@ -24,7 +24,7 @@ public class TheSmith extends PollingScript<ClientContext> implements PaintListe
     private int startSmithingLvl = 14;
     private int smithingLvl = 1;
 
-    private String[] choice = {"", "", ""};
+    private int[] choice = {0, 0, 0, 0, 0, 0, 0};
 
     @Override
     public void start() {
@@ -35,7 +35,7 @@ public class TheSmith extends PollingScript<ClientContext> implements PaintListe
         choice = Choices.UserChoice();
 
         taskList.add(new Bank(ctx, choice));
-        taskList.add(new Smithing(ctx));
+        taskList.add(new Smithing(ctx, choice));
 
     }
 
@@ -44,7 +44,7 @@ public class TheSmith extends PollingScript<ClientContext> implements PaintListe
         Condition.wait(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                return choice[0] != "";
+                return choice[0] != 0;
             }
         }, 250, 20);
         //click skill on lvlup

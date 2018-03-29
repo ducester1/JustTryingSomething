@@ -22,8 +22,9 @@ public class Choices extends ClientAccessor {
     public static Component widgetComponent;
     private static String bar;
     private static String item;
+    private static int[] value;
 
-    public static String[] UserChoice() {
+    public static int[] UserChoice() {
         String whatToDo[] = {"Smelt", "Smith"};
         smeltOrSmith = "" + (String) JOptionPane.showInputDialog(null, "Do you wanna Smelt or Smith", "The Smith", JOptionPane.PLAIN_MESSAGE, null, whatToDo, whatToDo[0]);
 
@@ -38,7 +39,12 @@ public class Choices extends ClientAccessor {
             switch (bar) {
                 case "Bronze": {
                     switch (item) {
+                        case "Bar": {
+                            value = MConstants.BRONZE_BARS;
+                            break;
+                        }
                         case "Platebody": {
+                            value = MConstants.BRONZE_PLATEBODY;
                             itemsFromBank[0] = 2349;
                             itemId = 1117;
                             //widgetComponent = ctx.widgets.widget(1371).component(44).component(145);
@@ -49,7 +55,7 @@ public class Choices extends ClientAccessor {
                 }
             }
         }
-        return new String[]{smeltOrSmith, bar, item};
+        return value;
     }
 }
 

@@ -1,17 +1,16 @@
 package TheSmith.Tasks;
 
-import TheSmith.MConstants;
 import TheSmith.Task;
-import org.powerbot.script.Condition;
 import org.powerbot.script.rt6.ClientContext;
 import org.powerbot.script.rt6.GameObject;
 
-import java.util.concurrent.Callable;
-
 public class Smithing extends Task {
 
-    public Smithing(ClientContext ctx) {
+    private static int[] choice;
+
+    public Smithing(ClientContext ctx, int[] choice) {
         super(ctx);
+        this.choice = choice;
     }
 
     @Override
@@ -37,6 +36,44 @@ public class Smithing extends Task {
         }
     }
 
+    /*
+        public static void whatToDo() {
+            //switch welke bar soort
+            switch (choice[1]) {
+                case "Bronze": {
+                    //switch welk item
+                    switch (choice[2]) {
+                        case "Bar": {
+
+                            break;
+                        }
+                        case "Platebody": {
+
+                            break;
+                        }
+                        default:
+                            break;
+                    }
+                }
+                case "Iron": {
+                    switch (choice[2]) {
+                        case "Bar": {
+
+                            break;
+                        }
+                        case "Platebody": {
+
+                            break;
+                        }
+                        default:
+                            break;
+                    }
+                }
+                default:
+                    break;
+            }
+        }
+    */
     private boolean WidgetOpen() {
         return false;
     }
