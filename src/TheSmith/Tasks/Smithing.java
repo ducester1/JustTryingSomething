@@ -15,66 +15,30 @@ public class Smithing extends Task {
 
     @Override
     public boolean activate() {
-        return ctx.backpack.select().id(436).count() > 1 && ctx.backpack.select().id(438).count() > 1;
+        return ctx.backpack.select().id(choice[0]).count() > choice[2] && choice[3] == 0 || (choice[3] != 0 && ctx.backpack.select().id(choice[3]).count() > choice[5]);
     }
 
     @Override
 
     public void execute() {
+        System.out.println("Smithing");
 
-        GameObject furnace = ctx.objects.select().id(45310).poll();
+        GameObject workStation;
+        if (choice[7] == 0) {
+            workStation = ctx.objects.select().id(45310).poll();
+        } else {
+            workStation = ctx.objects.select().id(12692).poll();
+        }
         if (ctx.widgets.widget(1371).valid()) {
             ctx.input.send(" ");
         }
-        if (furnace.inViewport()) {
+        if (workStation.inViewport()) {
             if (ctx.players.local().speed() == 0 && !ctx.widgets.widget(1251).valid()) {
-                furnace.click();
+                workStation.click();
             }
 
         } else {
-            ctx.camera.turnTo(furnace, 25);
+            ctx.camera.turnTo(workStation, 25);
         }
-    }
-
-    /*
-        public static void whatToDo() {
-            //switch welke bar soort
-            switch (choice[1]) {
-                case "Bronze": {
-                    //switch welk item
-                    switch (choice[2]) {
-                        case "Bar": {
-
-                            break;
-                        }
-                        case "Platebody": {
-
-                            break;
-                        }
-                        default:
-                            break;
-                    }
-                }
-                case "Iron": {
-                    switch (choice[2]) {
-                        case "Bar": {
-
-                            break;
-                        }
-                        case "Platebody": {
-
-                            break;
-                        }
-                        default:
-                            break;
-                    }
-                }
-                default:
-                    break;
-            }
-        }
-    */
-    private boolean WidgetOpen() {
-        return false;
     }
 }

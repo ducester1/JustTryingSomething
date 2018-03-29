@@ -44,6 +44,7 @@ public class Bank extends TheSmith.Task {
                 System.out.println(choice[0] + " " + choice[1] + " " + choice[2] + " " + choice[3] + " " + choice[4] + " " + choice[5] + " " + choice[6]);
                 boolean emptyBank = (ctx.bank.select().id(choice[0]).count() < choice[2] || (choice[3] != 0 && ctx.bank.select().id(choice[3]).count() < choice[5]));
                 if (emptyBank) {
+                    System.out.println("empty Bank");
                     ctx.controller.stop();
                 }
                 ctx.bank.withdraw(choice[0], choice[1]);
@@ -68,58 +69,4 @@ public class Bank extends TheSmith.Task {
             }
         }
     }
-/*
-    public static void whatToDo() {
-        //switch welke bar soort
-        switch (choice[1]) {
-            case "Bronze": {
-                //switch welk item
-                switch (choice[2]) {
-                    case "Bar": {
-                        itemsFromBank[0] = 436;
-                        amountItemsFromBank[0] = 14;
-                        amountNeeded[0] = 1;
-
-                        itemsFromBank[1] = 438;
-                        amountItemsFromBank[1] = 14;
-                        amountNeeded[1] = 1;
-
-                        itemId = 2349;
-                        break;
-                    }
-                    case "Platebody": {
-                        itemsFromBank[0] = 2349;
-                        amountItemsFromBank[0] = 0;
-                        amountNeeded[0] = 5;
-
-                        itemsFromBank[1] = 0;
-                        amountItemsFromBank[1] = -2;
-                        amountNeeded[1] = 0;
-
-                        itemId = 1117;
-                        break;
-                    }
-                    default:
-                        break;
-                }
-            }
-            case "Iron": {
-                switch (choice[2]) {
-                    case "Bar": {
-
-                        break;
-                    }
-                    case "Platebody": {
-
-                        break;
-                    }
-                    default:
-                        break;
-                }
-            }
-            default:
-                break;
-        }
-    }
-    */
 }
