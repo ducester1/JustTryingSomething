@@ -90,7 +90,7 @@ public class TheSmith extends PollingScript<ClientContext> implements PaintListe
 
         Graphics2D g = (Graphics2D) graphics;
 
-        g.setColor(new Color(0, 0, 0, 180));
+        g.setColor(new Color(0, 0, 0, 100));
         g.fillRect(0, 0, 300, 200);
 
         g.setColor(new Color(255, 255, 255));

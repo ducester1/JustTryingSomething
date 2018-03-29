@@ -1,8 +1,10 @@
 package TheSmith.Tasks;
 
+import TheSmith.Choices;
 import TheSmith.Task;
 import org.powerbot.script.rt6.ClientContext;
 import org.powerbot.script.rt6.GameObject;
+import org.powerbot.script.rt6.Widget;
 
 public class Smithing extends Task {
 
@@ -29,8 +31,13 @@ public class Smithing extends Task {
         } else {
             workStation = ctx.objects.select().id(12692).poll();
         }
-        if (ctx.widgets.widget(1371).valid()) {
-            ctx.input.send(" ");
+        if (ctx.widgets.component(1370, 20).valid()) {
+            if (Choices.widgetText == ctx.widgets.component(1370, 56).text())
+                ctx.widgets.component(1370, 20).click();
+            else {
+                //TODO Select bronze icon
+                Choices.widgetComponent.click();
+            }
         }
         if (workStation.inViewport()) {
             if (ctx.players.local().speed() == 0 && !ctx.widgets.widget(1251).valid()) {

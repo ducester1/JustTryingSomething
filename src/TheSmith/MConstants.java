@@ -1,7 +1,5 @@
 package TheSmith;
 
-import org.powerbot.script.Tile;
-
 public class MConstants {
 
     //itemsFromBankID1 , amount1, amountNeeded1 , itemsFromBankID2 , amount2 , amountNeeded2 , itemID , Smelt(0) or smith(1)

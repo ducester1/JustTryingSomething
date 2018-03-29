@@ -15,14 +15,12 @@ public class Choices extends ClientAccessor {
         this.ctx = ctx;
     }
 
-    public static int[] itemsFromBank = {0, 0};
-    public static int itemId = 0;
     public static String smeltOrSmith;
     public static String widgetText;
-    public static Component widgetComponent;
     private static String bar;
-    private static String item;
+    public static String item;
     private static int[] value;
+    public static Component widgetComponent;
 
     public static int[] UserChoice() {
         String whatToDo[] = {"Smelt", "Smith"};
@@ -41,14 +39,11 @@ public class Choices extends ClientAccessor {
                     switch (item) {
                         case "Bar": {
                             value = MConstants.BRONZE_BARS;
+                            widgetText = "Bronze bar";
                             break;
                         }
                         case "Platebody": {
                             value = MConstants.BRONZE_PLATEBODY;
-                            itemsFromBank[0] = 2349;
-                            itemId = 1117;
-                            //widgetComponent = ctx.widgets.widget(1371).component(44).component(145);
-                            //ctx.widgets.widget(1371).component(94).text();
                             widgetText = "Bronze platebody";
                         }
                     }
