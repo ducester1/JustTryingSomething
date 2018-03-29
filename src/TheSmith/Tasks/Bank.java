@@ -1,25 +1,29 @@
 package TheSmith.Tasks;
 
 import org.powerbot.script.Condition;
+import org.powerbot.script.Nillable;
 import org.powerbot.script.rt6.ClientContext;
 
 import java.util.concurrent.Callable;
 
 public class Bank extends TheSmith.Task {
 
-    private String[] choice;
-    private int[] itemsFromBank = {0, 0};
-    private int itemId;
+    private static String[] choice;
+    private static int[] itemsFromBank = {0, 0};
+    private static int[] amountItemsFromBank = {0, 0};
+    private static int[] amountNeeded = {0, 0};
+    private static int itemId;
 
     public Bank(ClientContext ctx, String[] choice) {
         super(ctx);
         this.choice = choice;
+
     }
 
     @Override
     public boolean activate() {
-        return ctx.backpack.select().id(2349).count() == 14 || ctx.backpack.select().count() == 0 ||
-                ctx.backpack.select().id(436).count() < 1 || ctx.backpack.select().id(438).count() < 1;
+        return ctx.backpack.select().count() == 0 || ctx.backpack.select().id(itemsFromBank[0]).count() < amountNeeded[0] ||
+                (itemsFromBank[1] != 0 && ctx.backpack.select().id(itemsFromBank[1]).count() < amountNeeded[1]);
     }
 
     @Override
@@ -38,10 +42,11 @@ public class Bank extends TheSmith.Task {
                 }
             }
             if (inventCount == 0) {
-                if (ctx.bank.select().id(436).count() == 0 || ctx.bank.select().id(438).count() == 0) {
+                boolean emptyBank = (ctx.bank.select().id(itemsFromBank[0]).count() < amountNeeded[0] || (itemsFromBank[1] != 0 && ctx.bank.select().id(itemsFromBank[1]).count() < amountNeeded[1]));
+                if (emptyBank) {
                     ctx.controller.stop();
                 }
-                ctx.bank.withdraw(436, 14);
+                ctx.bank.withdraw(itemsFromBank[0], amountItemsFromBank[0]);
                 ctx.bank.withdraw(438, 14);
                 ctx.bank.close();
             }
@@ -61,7 +66,7 @@ public class Bank extends TheSmith.Task {
         }
     }
 
-    private void WhatToDo() {
+    public static void whatToDo() {
         //switch welke bar soort
         switch (choice[1]) {
             case "Bronze": {
@@ -73,8 +78,26 @@ public class Bank extends TheSmith.Task {
                     }
                     case "Platebody": {
                         itemsFromBank[0] = 2349;
+                        amountItemsFromBank[0] = 28;
+                        amountNeeded[0] = 5;
+
                         itemsFromBank[1] = 0;
+                        amountItemsFromBank[1] = 0;
+                        amountNeeded[1] = 0;
+
                         itemId = 1117;
+                        break;
+                    }
+                }
+            }
+            case "Iron": {
+                switch (choice[2]) {
+                    case "Bar": {
+
+                        break;
+                    }
+                    case "Platebody": {
+
                         break;
                     }
                 }

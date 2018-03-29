@@ -33,6 +33,7 @@ public class TheSmith extends PollingScript<ClientContext> implements PaintListe
         startExp = ctx.skills.experience(Constants.SKILLS_SMITHING);
 
         choice = Choices.UserChoice();
+        Bank.whatToDo();
 
         taskList.add(new Bank(ctx, choice));
         taskList.add(new Smithing(ctx));
@@ -71,7 +72,6 @@ public class TheSmith extends PollingScript<ClientContext> implements PaintListe
                 break;
             }
         }
-
     }
 
     @Override
