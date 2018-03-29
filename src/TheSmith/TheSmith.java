@@ -33,7 +33,6 @@ public class TheSmith extends PollingScript<ClientContext> implements PaintListe
         startExp = ctx.skills.experience(Constants.SKILLS_SMITHING);
 
         choice = Choices.UserChoice();
-        Bank.whatToDo();
 
         taskList.add(new Bank(ctx, choice));
         taskList.add(new Smithing(ctx));
@@ -42,6 +41,12 @@ public class TheSmith extends PollingScript<ClientContext> implements PaintListe
 
     @Override
     public void poll() {
+        Condition.wait(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                return choice[0] != "";
+            }
+        }, 250, 20);
         //click skill on lvlup
         if (ctx.skills.level(Constants.SKILLS_SMITHING) > smithingLvl) {
             ctx.widgets.widget(1466).component(2).component(5).click();

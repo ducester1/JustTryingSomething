@@ -33,7 +33,7 @@ public class Choices extends ClientAccessor {
         } else {
             String whatBarToUse[] = {"Bronze", "Iron", "Silver", "Steel", "Gold", "Mithril", "Adamant", "Rune"};
             bar = "" + (String) JOptionPane.showInputDialog(null, "What bar would you like to use?", "The Smith", JOptionPane.PLAIN_MESSAGE, null, whatBarToUse, whatBarToUse[0]);
-            String whatItemToMake[] = {"Platebody"};
+            String whatItemToMake[] = {"Bar", "Platebody"};
             item = "" + (String) JOptionPane.showInputDialog(null, "What bar would you like to use?", "The Smith", JOptionPane.PLAIN_MESSAGE, null, whatItemToMake, whatItemToMake[0]);
             switch (bar) {
                 case "Bronze": {

@@ -12,12 +12,11 @@ public class Bank extends TheSmith.Task {
     private static int[] itemsFromBank = {0, 0};
     private static int[] amountItemsFromBank = {0, 0};
     private static int[] amountNeeded = {0, 0};
-    private static int itemId;
+    private static int itemId = 0;
 
     public Bank(ClientContext ctx, String[] choice) {
         super(ctx);
         this.choice = choice;
-
     }
 
     @Override
@@ -28,6 +27,7 @@ public class Bank extends TheSmith.Task {
 
     @Override
     public void execute() {
+        if (itemId == 0) whatToDo();
         if (ctx.bank.opened()) {
             final int inventCount = ctx.backpack.select().count();
             if (inventCount > 0) {
@@ -46,7 +46,8 @@ public class Bank extends TheSmith.Task {
                 if (emptyBank) {
                     ctx.controller.stop();
                 }
-
+                System.out.println(choice[0] + " " + choice[1] + " " + choice[2]);
+                System.out.println(itemsFromBank[0] + " , " + amountItemsFromBank[0]);
                 ctx.bank.withdraw(itemsFromBank[0], amountItemsFromBank[0]);
 
                 if (itemsFromBank[1] != 0) {
@@ -77,7 +78,16 @@ public class Bank extends TheSmith.Task {
                 //switch welk item
                 switch (choice[2]) {
                     case "Bar": {
+                        System.out.println("Set Bronze Bar");
+                        itemsFromBank[0] = 436;
+                        amountItemsFromBank[0] = 14;
+                        amountNeeded[0] = 1;
 
+                        itemsFromBank[1] = 438;
+                        amountItemsFromBank[1] = 14;
+                        amountNeeded[1] = 1;
+
+                        itemId = 2349;
                         break;
                     }
                     case "Platebody": {
@@ -92,6 +102,8 @@ public class Bank extends TheSmith.Task {
                         itemId = 1117;
                         break;
                     }
+                    default:
+                        break;
                 }
             }
             case "Iron": {
@@ -104,8 +116,12 @@ public class Bank extends TheSmith.Task {
 
                         break;
                     }
+                    default:
+                        break;
                 }
             }
+            default:
+                break;
         }
     }
 }
